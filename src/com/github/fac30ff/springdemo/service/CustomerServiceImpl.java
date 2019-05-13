@@ -37,4 +37,9 @@ public class CustomerServiceImpl implements CustomerService {
 		cd.deleteCustomer(id);
 	}
 
+	@Override
+	public List<Customer> searchCustomersByName(String searchName) {
+		return cd.searchCustomersByName(searchName);
+	}
+
 }

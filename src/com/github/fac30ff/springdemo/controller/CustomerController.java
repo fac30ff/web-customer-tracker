@@ -42,7 +42,6 @@ public class CustomerController {
 		return "customer-form";
 	}
 	
-	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("customerId") int id, Model model) {
 		Customer customer = cs.getCustomerById(id);
@@ -54,5 +53,11 @@ public class CustomerController {
 	public String deleteCustomer(@RequestParam("customerId") int id) {
 		cs.deleteCustomer(id);
 		return "redirect:/customer/list";
+	}
+	
+	@GetMapping("/search")
+	public String searchCustomer(@RequestParam("searchName") String searchName, Model model) {
+		model.addAttribute("customers", cs.searchCustomersByName(searchName));
+		return "list-customer";
 	}
 }
